@@ -36,4 +36,6 @@ make clean all
 
 Now all neccessery steps are done to Compile the Exapmles that Riot-Os provied such as the BorderRouter and the gcoap exapmles.
 Background :
-The samr21-xpro Controllers working with the IEEE 802.15.4 Protocol which is super energy saving, but is not compatible with wlan or anything else an "normal" computer or laptop provides. So the Connection to the Microcontroller have to be via USB because its the only usable Interface from our point of view. The Microcontrollers on the other hand can communicate over the IEEE 802.15.4 Protocol and thats where the BorderRouter takes place. He is connected to the Ubuntu via the USB and Communicates with the LED-Microcontrollers 
+The samr21-xpro Controllers working with the IEEE 802.15.4 Protocol which is super energy saving, but is not compatible with wlan or anything else an "normal" computer or laptop provides. So the Connection to the Microcontroller have to be via USB because its the only usable Interface from our point of view. The Microcontrollers on the other hand can communicate over the IEEE 802.15.4 Protocol and thats where the BorderRouter takes place. He is connected to the Ubuntu via the USB and Communicates with the LED-Microcontrollers over the network.
+
+So the Borderrouter is the connection to the running Microcontrollers. To 
