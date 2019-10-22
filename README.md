@@ -1,11 +1,15 @@
 # HTW-SN-RIOT-LED
 using the RIOT-OS to controll samr21-xpro devices with led's via Multicast 
 
-This Repository is part of the Forschungsseminar at HTW Dresden. It Contains the RIOT-OS in an modified form. This Readme is seperated in 2 Parts. The First one are the steps and background how to reproduce this Repo/Project. Second one is how to use the Project to Controll the Led's via Multicast.  If you have an trouble or understanding issues feel free to email me at gabor-schulze@posteo.de
+This Repository is part of the Forschungsseminar at HTW Dresden. It Contains the RIOT-OS in an modified form. This Readme is seperated in 2 Parts. The First one are the steps and background how to reproduce this Repo/Project. Second one is how to use the Project to Controll the Led's via Multicast.  If you have an trouble or understanding issues feel free to email me at gabor-schulze@posteo.de 
+
+in this Document Microcontrollers are sometimes called Node !
 
 
 
-Part I Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast
+## Part I Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
+
+### preparation
 
 I used to Do this on an fresh Ubuntu 16.04 32bit and have worked with somebody who used Ubuntu 18.? So the Steps here should work with 16.04, in the 18 version there where some Differences, espacialy for the arm-toolchain (wich is used to compile code for the samr21). if you having trouble with ubuntu 18 you should see the work of wenching du (link einfügen), he used to work with the saame microcontroller and the ubuntu 18. I worked with an native Ubuntu and not with an virtual machine. you can reproduce the steps on an virtual machine and flash the microcontroller (remember to open the usb ports to the virtual machine), but as i experienced there was some trouble with networking and the virtual machine so if the network via usb connection to the Borderrouter is not working you should switch to an nativ Ubuntu.
 
@@ -33,9 +37,24 @@ Riot-Os Provides 2 important tools for the Connection with the running Microcont
 
 `make clean all`
 
+### the Border Router
 
 Now all neccessery steps are done to Compile the Exapmles that Riot-Os provied such as the BorderRouter and the gcoap exapmles.
 Background :
-The samr21-xpro Controllers working with the IEEE 802.15.4 Protocol which is super energy saving, but is not compatible with wlan or anything else an "normal" computer or laptop provides. So the Connection to the Microcontroller have to be via USB because its the only usable Interface from our point of view. The Microcontrollers on the other hand can communicate over the IEEE 802.15.4 Protocol and thats where the BorderRouter takes place. He is connected to the Ubuntu via the USB and Communicates with the LED-Microcontrollers over the network. So he works as an Router and forwards all the Traffic between pc and Microcontrollers. For This purpose you give the Borderrouter an IP-Prefix wich the BR is using
+The samr21-xpro Controllers working with the IEEE 802.15.4 Protocol which is super energy saving, but is not compatible with wlan or anything else an "normal" computer or laptop provides. So the Connection to the Microcontroller have to be via USB because its the only usable Interface from our point of view. The Microcontrollers on the other hand can communicate over the IEEE 802.15.4 Protocol and thats where the BorderRouter takes place. He is connected to the Ubuntu via the USB and Communicates with the LED-Microcontrollers over the network. So he works as an Router and forwards all the Traffic between pc and Microcontrollers. For This purpose you give the Borderrouter an IP-Prefix wich the BR is using to create his own subnet, but later more .
 
-So the Borderrouter is the connection to the running Microcontrollers. To 
+So the Borderrouter is the connection to the running Microcontrollers. To make on of the Nodes an Microcontroller plug it on your pc and navigate to the /RIOT/examples/gnrc_border_router 
+
+`cd .../RIOT/examples/gnrc_border_router/`
+
+there is an makefile wich we can use to generate an borderrouter node. Riot is not only working with the samr21-xpro , so you should change the BOARD variable in the makefile to samr21-xpro, if not you can alternatively call 
+
+`export BOARD=samr21-xpro`
+
+to set an bash enviroment variable. but you have to do this every time you open an new terminal.
+
+After telling Riot what kind of board is used just call "make all" in the gnrc_border_router folder
+
+`make all`
+
+this Line 
