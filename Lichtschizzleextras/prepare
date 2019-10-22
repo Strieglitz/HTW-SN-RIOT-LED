@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "prepare Multicast"
+
+gnome-terminal -e "sudo make term -C ~/Lichtshizzle/RIOT/examples/gnrc_border_router/"
+
+ 
+
+tap0Exists=1;
+while ((tap0Exists)); do
+	if ifconfig|grep -q "tap0"; then
+	    tap0Exists=0;
+		echo "Online"
+	else
+	    echo "Not online"
+	fi
+done
+
+sudo ifconfig tap0 add aaaa::bbbb
+sudo ip6tables -t mangle -A OUTPUT -d ff0e::1 -j HL --hl-set 64
+sudo ifconfig wlp3s0 down
+echo "done"

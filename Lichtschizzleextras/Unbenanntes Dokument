@@ -1,0 +1,27 @@
+coap-client -m post coap://[ff0e::1]/LED/fft -e "2001:db8::7b62:397c:bd7:b5de&1&00ff00#"
+
+
+sudo ifconfig wlp3s0 down
+
+sudo ip6tables -t mangle -A OUTPUT -d ff0e::1 -j HL --hl-set 64
+
+sudo ifconfig tap0 add aaaa::bbbb
+
+coap-client -m post coap://[ff0e::1]/LED/fft -e "ff0e::1&1&00fff0#"
+
+
+in file RIOT/sys/include/net/ipv6/addr.h change
+
+#define IPV6_ADDR_ALL_NODES_LINK_LOCAL      {{ 0xff, 0x02, 0x00, 0x00, \
+                                               0x00, 0x00, 0x00, 0x00, \
+                                               0x00, 0x00, 0x00, 0x00, \
+                                               0x00, 0x00, 0x00, 0x01 }}
+
+to
+
+#define IPV6_ADDR_ALL_NODES_LINK_LOCAL      {{ 0xff, 0x0e, 0x00, 0x00, \
+                                               0x00, 0x00, 0x00, 0x00, \
+                                               0x00, 0x00, 0x00, 0x00, \
+                                               0x00, 0x00, 0x00, 0x01 }}
+
+

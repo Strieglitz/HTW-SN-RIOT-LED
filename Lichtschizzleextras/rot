@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+coap-client -m post coap://[ff0e::1]/LED/fft -e "ff0e::1&1&ff0000#"

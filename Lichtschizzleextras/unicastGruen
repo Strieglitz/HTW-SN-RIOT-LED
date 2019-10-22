@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ip1="2001:db8::7b78:b3a:4887:7392"
+ip2="2001:db8::7b7c:381f:8e23:3406"
+ip3="2001:db8::7b79:3c20:1b0d:aa3a"
+ip4="2001:db8::7b78:1f07:5426:bd9a"
+ip5="2001:db8::7b78:f56:65db:bc9e"
+ip6="2001:db8::7b79:427:4f8c:359a"
+
+echo "node $ip1"
+coap-client -m post coap://[$ip1]/LED/fft -e "$ip1&1&00ff00#"
+echo "node $ip2"
+coap-client -m post coap://[$ip2]/LED/fft -e "$ip2&1&00ff00#"
+echo "node $ip3"
+coap-client -m post coap://[$ip3]/LED/fft -e "$ip3&1&00ff00#"
+echo "node $ip4"
+coap-client -m post coap://[$ip4]/LED/fft -e "$ip4&1&00ff00#"
+echo "node $ip5"
+coap-client -m post coap://[$ip5]/LED/fft -e "$ip5&1&00ff00#"
+echo "node $ip6"
+coap-client -m post coap://[$ip6]/LED/fft -e "$ip6&1&00ff00#"
