@@ -1,0 +1,27 @@
+{
+  "name": "sensornetz-backend",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha \"./tests/**/*-test.js\"",
+    "start": "node ./src/server.js",
+    "debug": "node ./src/server.js --d"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "coap": "^0.21.0",
+    "coap-packet": "^0.1.14",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "images-upload-middleware": "^1.1.1",
+    "jimp": "^0.2.28",
+    "onecolor": "^3.0.5",
+    "stringify-buffer": "^1.1.0",
+    "uuid": "^3.1.0",
+    "ws": "^3.3.2"
+  }
+}
