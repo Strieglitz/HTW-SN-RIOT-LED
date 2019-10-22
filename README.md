@@ -57,4 +57,8 @@ After telling Riot what kind of board is used just call "make all" in the gnrc_b
 
 `make all`
 
-this Line 
+This Line generates the binary code for the Samr21-xpro. this Step is only needed after downlaoding Riot or after changes to the Codebase or Makefile. Now the binary code has to be moved to the Node. This process is called flashing the Node and is done in via the "make flash" commandthe same folder
+
+`make flash`
+
+now you should see some flashing lights on the node and some percentage numbers on the terminal. the Code is now on the Node and starts running. if you remove the Node from your computer its turned off. After pluging it back again the Code Starts to run again from the beginning. Its Possible to connect to the Node via the terminal with the "make term" command. The make term Command starts an 
