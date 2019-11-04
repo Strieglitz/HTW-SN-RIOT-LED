@@ -86,6 +86,10 @@ With the console from the make term command you can run commands on the coap-nod
 
 `ifconfig`
 
+you can also add ipadresses with 
+
+`ifconfig 6 add abcd::1234` 
+
 this is just the coap node provided by Riot which can be used for testing the Networking functionality, for the LED Nodes we use another COAP Programm for Riot as descriped in part II.
 
 ### the COAP Client
@@ -113,6 +117,15 @@ this is very usefull if you want to find out if your node is reachabil with your
 to recieve Requests from the internet you need to configure your router to forward the requests to the next station. To do so you have to make an entry to the static routing table on your Router. The IPv6 Prefix for you router is given by your provider and is fix, so it wont change. The IPv6 Adress from your router Provides an Prefix which you can use to generate an subnet 
 
 
+on Ubuntu you have to enable the feature to Forward packages as an router would do with :
+`sudo sysctl -w net.ipv6.conf.all.forwarding=1`
+
+to use the Coap-Client with multicast Adresses its neccessary to set the ttl. The Coap client or linux will set the ttl for multicast adress to 1, so we say the system that we set the ttl for multicast packages with our Our Adress to eg 64
+
+`sudo ip6tables -t mangle -A OUTPUT -d ff3e:003c:2003:5f:6e1d:c810:0:1 -j HL --hl-set 64`
+
+the -d option is only if you want to set that rule for an specific ip adress, but if needed you can leave this option
+
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
 
 Linux by default dont route Multicast Packages, so we have to install smcroute which will do tghe job.
@@ -130,5 +143,6 @@ in the config file we can say which incomming adresses we want to conect to whic
 Which means (read the brackets only ) : mroute => (Multicast Route) from xyz => (incomming interface xyz) group abcd::1234 => (with the multicast target group abcd::1234) source aaaa::bbbb => (with the origin from ip adress aaaa::bbbb) to tap0 => (into the target interface tap0)
 
 wlxbc0543037958 is the interface of my network card and is the connection to the interet, tap0 is the interface which the borderrouter generates when starting the interactiv terminal
+
 
 
