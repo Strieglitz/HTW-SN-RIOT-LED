@@ -61,6 +61,8 @@ This Line generates the binary code for the Samr21-xpro. this Step is only neede
 
 `make flash`
 
-now you should see some flashing lights on the node and some percentage numbers on the terminal. the Code is now on the Node and starts running. if you remove the Node from your computer its turned off. After pluging it back again the Code Starts to run again from the beginning. Its Possible to connect to the Node via the terminal with the "make term" command. The make term Command starts an 
+now you should see some flashing lights on the node and some percentage numbers on the terminal. the Code is now on the Node and starts running. if you remove the Node from your computer its turned off. After pluging it back again the Code Starts to run again from the beginning. Its Possible to connect to the Node via the terminal with the "make term" command. The make term Command in the BorderRouter folder starts another command "" 
+
+`make term`
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
