@@ -71,5 +71,17 @@ now you should see some flashing lights on the node and some percentage numbers 
 
 That are all the steps you need to do tho generate an Borderrouter Node. The subnet will be important later when configuring all devices to reachabile over the internet
 
+### the coap node
+
+to generate an coap node move to the "gcoap" folder and repeate the steps neccessary for the BorderRouter
+
+```
+cd .../RIOT/examples/gcoap/
+make all
+make flash
+make term
+```
+
+this is just the coap node provided by 
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
