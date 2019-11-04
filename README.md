@@ -145,5 +145,34 @@ Which means (read the brackets only ) : mroute => (Multicast Route) from xyz => 
 wlxbc0543037958 is the interface of my network card and is the connection to the interet, tap0 is the interface which the borderrouter generates when starting the interactiv terminal
 
 
-### prepare the coap nodes
-all these steps have been done on this repository, but this are the steps how to end up with this
+### prepare Riot with the COAP-LED Project
+
+all these steps have been done on this repository, but this are the steps how to end up with this repo
+
+
+clone RIOT from HTW DD RN
+
+`git clone https://github.com/HTWDD-RN/RIOT.git`
+
+clone Sensornetzdemo from HTW DD RN 
+
+`git clone https://github.com/HTWDD-RN/Sensornetzdemo.git`
+
+copy Sensornetzdemo/riot to Riot/
+
+`cp -r Sensornetzdemo/riot RIOT/`
+
+go to the microcoap directory
+
+`cd RIOT/riot/microCoAP_server/`
+
+for make its neccessary to config an git username and email
+
+```
+git config --global user.email "yourEmail@gmail.com"
+git config --global user.name "YourUsername"
+```
+
+run make all
+
+`make all`
