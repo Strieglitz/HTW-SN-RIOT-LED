@@ -110,14 +110,14 @@ sudo cp examples/coap-client /usr/local/bin/
 after installing the coap-client you can run it with the following command. the IPAdress have to be replaced with the ip adress you want to reach eg ip adress of an coap node
 `coap-client -m get coap://[2002:8d38:831a:aaaa:221:2eff:ff00:1967]/.well-known/core`
 
-this is very usefull if you want to find out if your node is reachabil with your current network, system and borderrouter settings. if you run this command without some network configuration you wont become an positive response. An Positive response for the well-known/core (an resource on every node ) would be an xml tag with point 
+this is very usefull if you want to find out if your node is reachabil with your current network, system and borderrouter settings. if you run this command without some network configuration you wont become an positive response. An Positive response for the well-known/core (an resource on every node ) would be "v:1 t:0 tkl:0 c:1 id:1234 </cli/stats>,</riot/board>"
 
 ### Global Routabil Coap-Request
 
 to recieve Requests from the internet you need to configure your router to forward the requests to the next station. To do so you have to make an entry to the static routing table on your Router. The IPv6 Prefix for you router is given by your provider and is fix, so it wont change. The IPv6 Adress from your router Provides an Prefix which you can use to generate an subnet 
 
 
-on Ubuntu you have to enable the feature to Forward packages as an router would do with :
+on Ubuntu you have to enable the feature to Forward packages as an router would do with (only active till restart) :
 `sudo sysctl -w net.ipv6.conf.all.forwarding=1`
 
 to use the Coap-Client with multicast Adresses its neccessary to set the ttl. The Coap client or linux will set the ttl for multicast adress to 1, so we say the system that we set the ttl for multicast packages with our Our Adress to eg 64
@@ -128,7 +128,7 @@ the -d option is only if you want to set that rule for an specific ip adress, bu
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
 
-Linux by default dont route Multicast Packages, so we have to install smcroute which will do tghe job.
+Linux by default dont route Multicast Packages, so we have to install smcroute which will do the job.
 
 `sudo apt install smcroute`
 
@@ -145,4 +145,5 @@ Which means (read the brackets only ) : mroute => (Multicast Route) from xyz => 
 wlxbc0543037958 is the interface of my network card and is the connection to the interet, tap0 is the interface which the borderrouter generates when starting the interactiv terminal
 
 
-
+### prepare the coap nodes
+all these steps have been done on this repository, but this are the steps how to end up with this
