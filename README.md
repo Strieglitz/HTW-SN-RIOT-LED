@@ -7,7 +7,7 @@ in this Document Microcontrollers are sometimes called Node !
 
 
 
-## Part I Use Riot's Borderrouter and Gcoap examples to create an Nodebased network and run commands with the coap-client.
+## Part I Use Riot's Borderrouter and Gcoap examples to create an Nodebased network and run commands with the coap-client over the nertwork.
 
 ### preparation
 
@@ -82,6 +82,24 @@ make flash
 make term
 ```
 
-this is just the coap node provided by 
+this is just the coap node provided by Riot which can be used for testing the Networking functionality, for the LED Nodes we use another COAP Programm for Riot as descriped in part II.
+
+### the COAP Client
+
+install the Coap-client like this https://www2.htw-dresden.de/~wiki_sn/index.php/Coap-client_installieren :
+```
+apt install autoconf
+cd /usr/src
+wget http://downloads.sourceforge.net/project/libcoap/coap-18/libcoap-4.1.1.tar.gz
+tar -xf libcoap-4.1.1.tar.gz
+cd libcoap-4.1.1
+autoconf
+./configure
+make
+sudo cp examples/coap-client /usr/local/bin/
+```
+
+after installing the coap-client you can run it with 
+
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
