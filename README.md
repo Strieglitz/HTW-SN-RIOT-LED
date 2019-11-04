@@ -61,8 +61,13 @@ This Line generates the binary code for the Samr21-xpro. this Step is only neede
 
 `make flash`
 
-now you should see some flashing lights on the node and some percentage numbers on the terminal. the Code is now on the Node and starts running. if you remove the Node from your computer its turned off. After pluging it back again the Code Starts to run again from the beginning. Its Possible to connect to the Node via the terminal with the "make term" command. The make term Command in the BorderRouter folder starts another command "" 
+now you should see some flashing lights on the node and some percentage numbers on the terminal. the Code is now on the Node and starts running. if you remove the Node from your computer its turned off. After pluging it back again the Code Starts to run again from the beginning. Watch out to have only 1 microcontroller connected to the computer when flashing. Its Possible to connect to the Node via the terminal with the "make term" command. The make term Command in the BorderRouter folder starts another command "sudo sh /home/gabor/RIOT/dist/tools/ethos/start_network.sh /dev/ttyACM0 tap0 2003:5f:6e1d:c810::/60" which is actualy starting the interactive Console for the Borderrouter. So you can call this line instead and change parameters if needed. The "/dev/ttyACM0" describes which USB will be used. The first connected microcontroller is "ttyACM0" the second is "ttyACM1" and so on, if you have Multicple Nodes Connected to the Computer you can target for which microcontroller you want to start the interactive terminal. The "2003:5f:6e1d:c810::/60" Ip-Adress at the end tells the borderouter which subnet it should use for new connected microcontrollers.
 
 `make term`
+
+=> 
+
+`sudo sh /home/gabor/RIOT/dist/tools/ethos/start_network.sh /dev/ttyACM0 tap0 2003:5f:6e1d:c810::/60`
+
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
