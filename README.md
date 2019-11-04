@@ -69,7 +69,7 @@ now you should see some flashing lights on the node and some percentage numbers 
 
 `sudo sh /home/gabor/RIOT/dist/tools/ethos/start_network.sh /dev/ttyACM0 tap0 2003:5f:6e1d:c810::/60`
 
-That are all the steps you need to do tho generate an Borderrouter Node. The subnet will be important later when configuring all devices to reachabile over the internet
+That are all the steps you need to do tho generate an Borderrouter Node. The subnet will be important later when configuring all devices to reachabile over the internet. Its important that the network connection between your computer and the BorderRouter is only possible when the interactive terminal is running because it creates the tap0 interface which is neccessary to send data between pc and BR.
 
 ### the coap node
 
@@ -108,4 +108,27 @@ after installing the coap-client you can run it with the following command. the 
 
 this is very usefull if you want to find out if your node is reachabil with your current network, system and borderrouter settings. if you run this command without some network configuration you wont become an positive response. An Positive response for the well-known/core (an resource on every node ) would be an xml tag with point 
 
+### Global Routabil Coap-Request
+
+to recieve Requests from the internet you need to configure your router to forward the requests to the next station. To do so you have to make an entry to the static routing table on your Router. The IPv6 Prefix for you router is given by your provider and is fix, so it wont change. The IPv6 Adress from your router Provides an Prefix which you can use to generate an subnet 
+
+
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
+
+Linux by default dont route Multicast Packages, so we have to install smcroute which will do tghe job.
+
+`sudo apt install smcroute`
+
+smcroute can be configured via command line and config file. i think an config file is more easy so lets generate an config file
+
+`sudo gedit /etc/smcroute.conf`
+
+in the config file we can say which incomming adresses we want to conect to which interface. this works at the time of writing only if you say from which target adress you want to receive requests, but its planed that in the future you can recieve requests from any adress. so we write in the config file :
+
+`mroute from wlxbc0543037958 group ff3e:003c:2003:5f:6e1d:c810:0:1 source 2003:5f:6e23:e800:2c51:cbf5:af3d:3afb to tap0`
+
+Which means (read the brackets only ) : mroute => (Multicast Route) from xyz => (incomming interface xyz) group abcd::1234 => (with the multicast target group abcd::1234) source aaaa::bbbb => (with the origin from ip adress aaaa::bbbb) to tap0 => (into the target interface tap0)
+
+wlxbc0543037958 is the interface of my network card and is the connection to the interet, tap0 is the interface which the borderrouter generates when starting the interactiv terminal
+
+
