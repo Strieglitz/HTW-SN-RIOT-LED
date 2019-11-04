@@ -106,5 +106,6 @@ sudo cp examples/coap-client /usr/local/bin/
 after installing the coap-client you can run it with the following command. the IPAdress have to be replaced with the ip adress you want to reach eg ip adress of an coap node
 `coap-client -m get coap://[2002:8d38:831a:aaaa:221:2eff:ff00:1967]/.well-known/core`
 
+this is very usefull if you want to find out if your node is reachabil with your current network, system and borderrouter settings. if you run this command without some network configuration you wont become an positive response. An Positive response for the well-known/core (an resource on every node ) would be an xml tag with point 
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
