@@ -69,5 +69,7 @@ now you should see some flashing lights on the node and some percentage numbers 
 
 `sudo sh /home/gabor/RIOT/dist/tools/ethos/start_network.sh /dev/ttyACM0 tap0 2003:5f:6e1d:c810::/60`
 
+That are all the steps you need to do tho generate an Borderrouter Node. The subnet will be important later when configuring all devices to reachabile over the internet
+
 
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
