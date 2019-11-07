@@ -126,6 +126,10 @@ to use the Coap-Client with multicast Adresses its neccessary to set the ttl. Th
 
 the -d option is only if you want to set that rule for an specific ip adress, but if needed you can leave this option
 
+### Configure the Subnet 
+to get the request to the destination node 
+###
+
 ## Part II Steps neccessery to use RIOT-OS and the LED on Microcontroller Project https://github.com/HTWDD-RN/Sensornetzdemo to controll the samr21-xpro via Multicast.
 
 Linux by default dont route Multicast Packages, so we have to install smcroute which will do the job.
@@ -176,3 +180,5 @@ git config --global user.name "YourUsername"
 run make all
 
 `make all`
+
+change the precompiled ipv6 adresses
