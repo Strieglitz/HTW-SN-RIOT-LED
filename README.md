@@ -149,6 +149,10 @@ Which means (read the brackets only ) : mroute => (Multicast Route) from xyz => 
 wlxbc0543037958 is the interface of my network card and is the connection to the interet, tap0 is the interface which the borderrouter generates when starting the interactiv terminal
 
 
+
+now start the smcroute deamon which works in the background
+`sudo smcroute -d oder sudo smcroute -n`
+
 ### prepare Riot with the COAP-LED Project
 
 all these steps have been done on this repository, but this are the steps how to end up with this repo
